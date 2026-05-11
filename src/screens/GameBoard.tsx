@@ -1,19 +1,131 @@
 // AUTO-GENERATED from Stitch — DO NOT modify layout or CSS
 // Screen: Game Board
-// 
+//
 // AGENT INSTRUCTIONS:
 // 1. DO NOT change className values or layout structure
 // 2. Add useState for dynamic values (replace hardcoded text)
 // 3. Wire interactive controls through the typed actions prop
 // 4. Replace placeholder data with props/state
 
+import { useMemo } from 'react';
+import {
+  BOARD_HEIGHT,
+  BOARD_WIDTH,
+  Cell,
+  getShape,
+  getTetromino,
+  TetrominoType,
+} from '../types/domain';
+
 export type GameBoardActionId = "account-circle-1" | "new-game-2" | "pause-pause-3";
 
 export interface GameBoardProps {
+  board?: Cell[][];
+  currentPiece?: { type: TetrominoType; x: number; y: number; rotation: number } | null;
+  nextPiece?: TetrominoType | null;
+  holdPiece?: TetrominoType | null;
+  ghostY?: number;
+  score?: number;
+  level?: number;
+  lines?: number;
+  highScore?: number;
   actions?: Partial<Record<GameBoardActionId, () => void>>;
 }
 
-export function GameBoard({ actions }: GameBoardProps) {
+function renderBoardWithPiece(
+  board: Cell[][],
+  piece: { type: TetrominoType; x: number; y: number; rotation: number } | null,
+  ghostY: number
+): Cell[][] {
+  const rendered = board.map((row) => [...row]);
+  if (!piece) return rendered;
+  const shape = getShape(piece.type, piece.rotation);
+  // Render ghost
+  for (let row = 0; row < shape.length; row++) {
+    for (let col = 0; col < shape[row].length; col++) {
+      if (shape[row][col]) {
+        const gx = piece.x + col;
+        const gy = ghostY + row;
+        if (gy >= 0 && gy < BOARD_HEIGHT && gx >= 0 && gx < BOARD_WIDTH && rendered[gy][gx] === null) {
+          rendered[gy][gx] = `ghost-${piece.type}` as Cell;
+        }
+      }
+    }
+  }
+  // Render piece
+  for (let row = 0; row < shape.length; row++) {
+    for (let col = 0; col < shape[row].length; col++) {
+      if (shape[row][col]) {
+        const px = piece.x + col;
+        const py = piece.y + row;
+        if (py >= 0 && py < BOARD_HEIGHT && px >= 0 && px < BOARD_WIDTH) {
+          rendered[py][px] = piece.type;
+        }
+      }
+    }
+  }
+  return rendered;
+}
+
+function MiniPiece({ type }: { type: TetrominoType }) {
+  const tetromino = getTetromino(type);
+  const shape = tetromino.shape;
+  const rows = shape.length;
+  const cols = shape[0].length;
+  return (
+    <div
+      className="next-grid"
+      style={{
+        gridTemplateColumns: `repeat(${cols}, 1fr)`,
+        gridTemplateRows: `repeat(${rows}, 1fr)`,
+        width: '100%',
+        height: '100%',
+      }}
+    >
+      {shape.map((row, ri) =>
+        row.map((cell, ci) => (
+          <div
+            key={`${ri}-${ci}`}
+            className="next-cell"
+            style={{
+              backgroundColor: cell ? tetromino.color : 'transparent',
+              border: cell ? `1px solid ${tetromino.borderColor}` : 'none',
+            }}
+          />
+        ))
+      )}
+    </div>
+  );
+}
+
+function StatCard({ label, value }: { label: string; value: string | number }) {
+  return (
+    <div>
+      <div className="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-xs">
+        {label}
+      </div>
+      <div className="font-label-mono text-label-mono text-primary text-xl">{value}</div>
+    </div>
+  );
+}
+
+export function GameBoard({
+  board,
+  currentPiece,
+  nextPiece,
+  holdPiece,
+  ghostY = 0,
+  score = 0,
+  level = 1,
+  lines = 0,
+  highScore = 0,
+  actions,
+}: GameBoardProps) {
+  const renderedBoard = useMemo(
+    () => renderBoardWithPiece(board ?? [], currentPiece ?? null, ghostY),
+    [board, currentPiece, ghostY]
+  );
+
   return (
     <>
       {/* TopNavBar */}
@@ -43,7 +155,7 @@ export function GameBoard({ actions }: GameBoardProps) {
       </div>
       <div>
       <div className="font-label-sm text-label-sm text-primary">OPERATOR_01</div>
-      <div className="font-label-mono text-label-mono text-on-surface-variant text-[10px]">LVL 42 PRESTIGE</div>
+      <div className="font-label-mono text-label-mono text-on-surface-variant text-[10px]">LVL {level} PRESTIGE</div>
       </div>
       </div>
       </div>
@@ -83,15 +195,17 @@ export function GameBoard({ actions }: GameBoardProps) {
       <div className="flex flex-row md:flex-col gap-md">
       <div className="bg-surface-container border border-outline-variant rounded-lg p-md w-[120px] lg:w-[140px] flex flex-col items-center">
       <div className="font-label-sm text-label-sm text-on-surface-variant mb-sm w-full text-left uppercase tracking-wider">HOLD</div>
-      {/* Empty Hold Box */}
       <div className="w-[80px] h-[80px] bg-surface-container-lowest border border-surface-variant flex items-center justify-center">
-      {/* Ghost piece representation */}
-      <div className="grid grid-cols-4 grid-rows-2 gap-[1px] opacity-20">
-      <div className="col-start-2 w-4 h-4 border border-primary"></div>
-      <div className="col-start-3 w-4 h-4 border border-primary"></div>
-      <div className="row-start-2 col-start-2 w-4 h-4 border border-primary"></div>
-      <div className="row-start-2 col-start-3 w-4 h-4 border border-primary"></div>
-      </div>
+        {holdPiece ? (
+          <MiniPiece type={holdPiece} />
+        ) : (
+          <div className="w-full h-full opacity-20 grid grid-cols-4 grid-rows-2 gap-[1px]">
+            <div className="col-start-2 w-full h-full border border-primary" />
+            <div className="col-start-3 w-full h-full border border-primary" />
+            <div className="row-start-2 col-start-2 w-full h-full border border-primary" />
+            <div className="row-start-2 col-start-3 w-full h-full border border-primary" />
+          </div>
+        )}
       </div>
       </div>
       <div className="bg-surface-container border border-outline-variant rounded-lg p-md w-[120px] lg:w-[140px] flex flex-col items-start gap-xs hidden md:flex">
@@ -103,90 +217,47 @@ export function GameBoard({ actions }: GameBoardProps) {
       </div>
       </div>
       {/* Center: Game Board (10x20) */}
-      {/* Assuming a 30px per block scale for visual clarity on web */}
       <div className="bg-surface-container-lowest border-2 border-outline-variant relative overflow-hidden game-grid w-[250px] h-[500px] sm:w-[300px] sm:h-[600px] shadow-2xl flex-shrink-0">
-      {/* Active Piece (T-Tetromino in Purple) */}
-      <div className="absolute top-[20%] left-[40%] w-[30%] h-[10%] flex flex-col gap-[1px]">
-      <div className="flex justify-center w-full h-1/2 gap-[1px]">
-      <div className="w-1/3 h-full bg-[#a855f7] border border-[#d8b4fe]"></div>
-      </div>
-      <div className="flex w-full h-1/2 gap-[1px]">
-      <div className="w-1/3 h-full bg-[#a855f7] border border-[#d8b4fe]"></div>
-      <div className="w-1/3 h-full bg-[#a855f7] border border-[#d8b4fe]"></div>
-      <div className="w-1/3 h-full bg-[#a855f7] border border-[#d8b4fe]"></div>
-      </div>
-      </div>
-      {/* Ghost Piece (at the bottom) */}
-      <div className="absolute bottom-[15%] left-[40%] w-[30%] h-[10%] flex flex-col gap-[1px] opacity-40">
-      <div className="flex justify-center w-full h-1/2 gap-[1px]">
-      <div className="w-1/3 h-full border border-primary"></div>
-      </div>
-      <div className="flex w-full h-1/2 gap-[1px]">
-      <div className="w-1/3 h-full border border-primary"></div>
-      <div className="w-1/3 h-full border border-primary"></div>
-      <div className="w-1/3 h-full border border-primary"></div>
-      </div>
-      </div>
-      {/* Stacked Pieces (Bottom) */}
-      {/* L-Piece Orange */}
-      <div className="absolute bottom-0 right-[10%] w-[20%] h-[15%] flex gap-[1px]">
-      <div className="w-1/2 h-full flex flex-col gap-[1px] justify-end">
-      <div className="w-full h-1/3 bg-[#f97316] border border-[#fdba74]"></div>
-      </div>
-      <div className="w-1/2 h-full flex flex-col gap-[1px]">
-      <div className="w-full h-1/3 bg-[#f97316] border border-[#fdba74]"></div>
-      <div className="w-full h-1/3 bg-[#f97316] border border-[#fdba74]"></div>
-      <div className="w-full h-1/3 bg-[#f97316] border border-[#fdba74]"></div>
-      </div>
-      </div>
-      {/* Square Yellow */}
-      <div className="absolute bottom-0 left-[20%] w-[20%] h-[10%] flex flex-wrap gap-[1px]">
-      <div className="w-[calc(50%-0.5px)] h-[calc(50%-0.5px)] bg-[#eab308] border border-[#fde047]"></div>
-      <div className="w-[calc(50%-0.5px)] h-[calc(50%-0.5px)] bg-[#eab308] border border-[#fde047]"></div>
-      <div className="w-[calc(50%-0.5px)] h-[calc(50%-0.5px)] bg-[#eab308] border border-[#fde047]"></div>
-      <div className="w-[calc(50%-0.5px)] h-[calc(50%-0.5px)] bg-[#eab308] border border-[#fde047]"></div>
-      </div>
-      {/* Line Cyan */}
-      <div className="absolute bottom-[10%] left-0 w-[40%] h-[5%] flex gap-[1px]">
-      <div className="w-1/4 h-full bg-[#06b6d4] border border-[#67e8f9]"></div>
-      <div className="w-1/4 h-full bg-[#06b6d4] border border-[#67e8f9]"></div>
-      <div className="w-1/4 h-full bg-[#06b6d4] border border-[#67e8f9]"></div>
-      <div className="w-1/4 h-full bg-[#06b6d4] border border-[#67e8f9]"></div>
-      </div>
+        <div className="tetris-board">
+          {renderedBoard.map((row, ri) =>
+            row.map((cell, ci) => {
+              const isGhost = typeof cell === 'string' && cell.startsWith('ghost-');
+              const type = isGhost ? (cell.replace('ghost-', '') as TetrominoType) : cell;
+              const tetromino = type ? getTetromino(type) : null;
+              return (
+                <div
+                  key={`${ri}-${ci}`}
+                  className={`tetris-cell ${cell ? 'filled' : ''} ${isGhost ? 'ghost' : ''}`}
+                  style={
+                    tetromino
+                      ? {
+                          backgroundColor: tetromino.color,
+                          borderColor: tetromino.borderColor,
+                        }
+                      : undefined
+                  }
+                />
+              );
+            })
+          )}
+        </div>
       </div>
       {/* Right Panel: NEXT & Stats */}
       <div className="flex flex-row md:flex-col gap-md">
       <div className="bg-surface-container border border-outline-variant rounded-lg p-md w-[120px] lg:w-[140px] flex flex-col items-center">
       <div className="font-label-sm text-label-sm text-on-surface-variant mb-sm w-full text-left uppercase tracking-wider">NEXT</div>
       <div className="w-[80px] h-[80px] bg-surface-container-lowest border border-surface-variant flex items-center justify-center relative">
-      {/* Next Piece (Z-Tetromino Red) */}
-      <div className="w-12 h-8 flex flex-col gap-[1px]">
-      <div className="flex w-full h-1/2 gap-[1px] justify-start">
-      <div className="w-1/2 h-full bg-[#ef4444] border border-[#fca5a5]"></div>
-      <div className="w-1/2 h-full bg-[#ef4444] border border-[#fca5a5]"></div>
-      </div>
-      <div className="flex w-full h-1/2 gap-[1px] justify-end">
-      <div className="w-1/2 h-full bg-[#ef4444] border border-[#fca5a5]"></div>
-      <div className="w-1/2 h-full bg-[#ef4444] border border-[#fca5a5]"></div>
-      </div>
-      </div>
+        {nextPiece ? (
+          <MiniPiece type={nextPiece} />
+        ) : null}
       </div>
       </div>
       <div className="bg-surface-container border border-outline-variant rounded-lg p-md w-[120px] lg:w-[140px] flex flex-col gap-md">
-      <div>
-      <div className="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-xs">SCORE</div>
-      <div className="font-label-mono text-label-mono text-primary text-xl">042,950</div>
-      </div>
-      <div className="h-[1px] w-full bg-outline-variant"></div>
-      <div>
-      <div className="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-xs">LEVEL</div>
-      <div className="font-label-mono text-label-mono text-primary text-xl text-secondary">14</div>
-      </div>
-      <div className="h-[1px] w-full bg-outline-variant"></div>
-      <div>
-      <div className="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider mb-xs">LINES</div>
-      <div className="font-label-mono text-label-mono text-primary text-xl">142</div>
-      </div>
+        <StatCard label="SCORE" value={score.toLocaleString()} />
+        <div className="h-[1px] w-full bg-outline-variant"></div>
+        <StatCard label="LEVEL" value={level} />
+        <div className="h-[1px] w-full bg-outline-variant"></div>
+        <StatCard label="LINES" value={lines} />
       </div>
       </div>
       </div>
