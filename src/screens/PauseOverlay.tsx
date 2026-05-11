@@ -11,9 +11,17 @@ export type PauseOverlayActionId = "resume-1" | "restart-2" | "main-menu-3";
 
 export interface PauseOverlayProps {
   actions?: Partial<Record<PauseOverlayActionId, () => void>>;
+  score?: number;
+  level?: number;
+  lines?: number;
+  elapsedTime?: string;
 }
 
-export function PauseOverlay({ actions }: PauseOverlayProps) {
+function formatNumber(n: number): string {
+  return n.toLocaleString('en-US');
+}
+
+export function PauseOverlay({ actions, score = 0, level = 1, lines = 0, elapsedTime = '00:00' }: PauseOverlayProps) {
   return (
     <>
       {/* Mock Game Background (Blurred) */}
@@ -53,11 +61,11 @@ export function PauseOverlay({ actions }: PauseOverlayProps) {
       <div className="mt-xl w-full flex justify-between border-t border-outline-variant pt-md">
       <div className="flex flex-col">
       <span className="text-label-sm font-label-sm text-on-surface-variant uppercase">Current Score</span>
-      <span className="text-label-mono font-label-mono text-primary">14,200</span>
+      <span className="text-label-mono font-label-mono text-primary" data-testid="current-score">{formatNumber(score)}</span>
       </div>
       <div className="flex flex-col text-right">
       <span className="text-label-sm font-label-sm text-on-surface-variant uppercase">Time</span>
-      <span className="text-label-mono font-label-mono text-primary">08:42</span>
+      <span className="text-label-mono font-label-mono text-primary" data-testid="elapsed-time">{elapsedTime}</span>
       </div>
       </div>
       </div>

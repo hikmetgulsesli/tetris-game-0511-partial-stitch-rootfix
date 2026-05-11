@@ -14,18 +14,18 @@ describe('PauseOverlay', () => {
 
   it('displays score, level, and lines', () => {
     renderWithProviders(
-      <PauseOverlay {...{ score: 14200, level: 5, lines: 30 } as any} />
+      <PauseOverlay score={14200} level={5} lines={30} />
     );
-    expect(screen.getByText('Current Score').nextElementSibling).toHaveTextContent('14,200');
+    expect(screen.getByTestId('current-score')).toHaveTextContent('14,200');
     // The pause overlay does not show level/lines directly in separate labels,
     // only score and time are shown in the contextual stats snippet.
   });
 
   it('shows elapsed time', () => {
     renderWithProviders(
-      <PauseOverlay {...{ elapsedTime: '08:42' } as any} />
+      <PauseOverlay elapsedTime="08:42" />
     );
-    expect(screen.getByText('08:42')).toBeInTheDocument();
+    expect(screen.getByTestId('elapsed-time')).toHaveTextContent('08:42');
   });
 
   it('triggers resume action', () => {

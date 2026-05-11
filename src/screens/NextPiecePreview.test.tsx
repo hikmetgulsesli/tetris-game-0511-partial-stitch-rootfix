@@ -42,9 +42,9 @@ describe('NextPiecePreview', () => {
     renderWithProviders(
       <NextPiecePreview actions={{ 'account-circle-1': account }} />
     );
-    const btn = document.querySelector('[data-action-id="account-circle-1"]');
+    const btn = screen.getByRole('button', { name: /account/i });
     expect(btn).not.toBeNull();
-    fireEvent.click(btn!);
+    fireEvent.click(btn);
     expect(account).toHaveBeenCalledTimes(1);
   });
 

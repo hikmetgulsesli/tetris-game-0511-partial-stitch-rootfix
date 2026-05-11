@@ -15,23 +15,23 @@ describe('GameOver', () => {
 
   it('displays score, level, and lines', () => {
     renderWithProviders(
-      <GameOver {...{ score: 142850, level: 12, lines: 114 } as any} />
+      <GameOver score={142850} level={12} lines={114} />
     );
-    expect(screen.getByText('142,850')).toBeInTheDocument();
-    expect(screen.getByText('12')).toBeInTheDocument();
-    expect(screen.getByText('114')).toBeInTheDocument();
+    expect(screen.getByTestId('final-score')).toHaveTextContent('142,850');
+    expect(screen.getByTestId('level-reached')).toHaveTextContent('12');
+    expect(screen.getByTestId('lines-cleared')).toHaveTextContent('114');
   });
 
-  it.skip('shows new personal best badge when isNewHighScore is true', () => {
+  it('shows new personal best badge when isNewHighScore is true', () => {
     renderWithProviders(
-      <GameOver {...{ score: 100000, isNewHighScore: true } as any} />
+      <GameOver score={100000} isNewHighScore={true} />
     );
     expect(screen.getByText('New Personal Best')).toBeInTheDocument();
   });
 
-  it.skip('hides new personal best badge when isNewHighScore is false', () => {
+  it('hides new personal best badge when isNewHighScore is false', () => {
     renderWithProviders(
-      <GameOver {...{ score: 50000, isNewHighScore: false } as any} />
+      <GameOver score={50000} isNewHighScore={false} />
     );
     expect(screen.queryByText('New Personal Best')).not.toBeInTheDocument();
   });
@@ -66,10 +66,10 @@ describe('GameOver', () => {
     expect(menu).toHaveBeenCalledTimes(1);
   });
 
-  it.skip('displays zero values correctly', () => {
-    renderWithProviders(<GameOver {...{ score: 0, level: 1, lines: 0 } as any} />);
-    expect(screen.getByText('FINAL SCORE').nextElementSibling).toHaveTextContent('0');
-    expect(screen.getByText('LEVEL REACHED').nextElementSibling).toHaveTextContent('1');
-    expect(screen.getByText('LINES CLEARED').nextElementSibling).toHaveTextContent('0');
+  it('displays zero values correctly', () => {
+    renderWithProviders(<GameOver score={0} level={1} lines={0} />);
+    expect(screen.getByTestId('final-score')).toHaveTextContent('0');
+    expect(screen.getByTestId('level-reached')).toHaveTextContent('1');
+    expect(screen.getByTestId('lines-cleared')).toHaveTextContent('0');
   });
 });
