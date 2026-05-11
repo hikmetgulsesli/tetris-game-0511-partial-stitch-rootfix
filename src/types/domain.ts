@@ -12,7 +12,7 @@ export interface Tetromino {
   borderColor: string;
 }
 
-export type Cell = TetrominoType | null;
+export type Cell = TetrominoType | `ghost-${TetrominoType}` | null;
 
 export type Board = Cell[][];
 
@@ -247,6 +247,10 @@ export function getShape(type: TetrominoType, rotation: number): number[][] {
   return ROTATIONS[type][rotation % 4];
 }
 
-export function getTetromino(type: TetrominoType): Tetromino {
-  return TETROMINOES[type];
+export function getTetromino(type: TetrominoType): Tetromino;
+export function getTetromino(type: Cell): Tetromino | null;
+export function getTetromino(type: Cell): Tetromino | null {
+  if (type === null) return null;
+  const realType = (type.startsWith('ghost-') ? type.replace('ghost-', '') : type) as TetrominoType;
+  return TETROMINOES[realType];
 }
