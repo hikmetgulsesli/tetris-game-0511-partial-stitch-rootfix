@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GAME PAUSED</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#8e9193",
+                        "on-tertiary-fixed-variant": "#494640",
+                        "on-secondary-container": "#abb9d2",
+                        "surface-container-high": "#2a2a2a",
+                        "error": "#ffb4ab",
+                        "primary-container": "#e0e3e5",
+                        "on-background": "#e5e2e1",
+                        "surface": "#131313",
+                        "surface-bright": "#3a3939",
+                        "on-tertiary-fixed": "#1d1b16",
+                        "inverse-primary": "#5c5f61",
+                        "error-container": "#93000a",
+                        "background": "#131313",
+                        "on-error": "#690005",
+                        "tertiary-container": "#e7e2d9",
+                        "on-surface": "#e5e2e1",
+                        "surface-dim": "#131313",
+                        "outline-variant": "#444749",
+                        "secondary-container": "#3c4a5e",
+                        "secondary-fixed": "#d5e3fd",
+                        "primary-fixed-dim": "#c4c7c9",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "tertiary": "#ffffff",
+                        "tertiary-fixed": "#e7e2d9",
+                        "surface-container": "#201f1f",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary": "#32302a",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "surface-tint": "#c4c7c9",
+                        "on-primary-fixed-variant": "#444749",
+                        "on-surface-variant": "#c4c7c9",
+                        "surface-variant": "#353535",
+                        "primary-fixed": "#e0e3e5",
+                        "surface-container-highest": "#353535",
+                        "inverse-surface": "#e5e2e1",
+                        "inverse-on-surface": "#313030",
+                        "on-primary-container": "#626567",
+                        "on-tertiary-container": "#67645d",
+                        "tertiary-fixed-dim": "#cbc6bd",
+                        "on-primary": "#2d3133",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-primary-fixed": "#191c1e",
+                        "secondary": "#b9c7e0",
+                        "surface-container-low": "#1c1b1b",
+                        "on-secondary": "#233144",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "unit": "4px",
+                        "board-width": "320px",
+                        "sm": "8px",
+                        "xl": "40px",
+                        "touch-target": "44px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Geist"],
+                        "label-mono": ["JetBrains Mono"],
+                        "body-lg": ["Geist"],
+                        "body-md": ["Geist"],
+                        "display": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "headline-lg": ["Geist"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "label-mono": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "display": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen relative overflow-hidden flex flex-col justify-between">
+<!-- Mock Game Background (Blurred) -->
+<div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none opacity-40 blur-[12px]">
+<div class="w-board-width h-[640px] border border-outline-variant bg-surface-container relative">
+<!-- Simulated Tetrominoes -->
+<div class="absolute bottom-0 left-[80px] w-[80px] h-[40px] bg-secondary-fixed opacity-60"></div>
+<div class="absolute bottom-[40px] left-[120px] w-[40px] h-[40px] bg-primary-fixed opacity-60"></div>
+<div class="absolute top-[200px] left-[160px] w-[40px] h-[160px] bg-tertiary-fixed opacity-60"></div>
+</div>
+</div>
+<!-- Pause Overlay Canvas -->
+<main class="relative z-50 flex-grow flex items-center justify-center w-full h-full p-lg backdrop-blur-[12px] bg-[#0F172A]/70">
+<!-- Pause Dialog Container -->
+<div class="bg-surface-container border border-outline flex flex-col items-center justify-center p-xl w-full max-w-[400px]">
+<!-- Header -->
+<div class="mb-xl text-center">
+<span class="material-symbols-outlined text-display text-primary mb-md block" style="font-variation-settings: 'FILL' 1;">pause_circle</span>
+<h1 class="text-display font-display text-primary tracking-tighter">GAME PAUSED</h1>
+</div>
+<!-- Action Buttons -->
+<div class="w-full flex flex-col gap-md">
+<!-- Primary Action: Resume -->
+<button class="w-full h-touch-target bg-primary text-on-primary flex items-center justify-center border border-primary hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-[#22D3EE] focus:ring-offset-0 focus:ring-offset-surface-container">
+<span class="text-label-mono font-label-mono uppercase">Resume</span>
+</button>
+<!-- Secondary Action: Restart -->
+<button class="w-full h-touch-target bg-transparent text-primary flex items-center justify-center border border-outline-variant hover:bg-surface-container-high focus:outline-none focus:ring-2 focus:ring-[#22D3EE] focus:ring-offset-0 focus:ring-offset-surface-container">
+<span class="text-label-mono font-label-mono uppercase">Restart</span>
+</button>
+<!-- Tertiary Action: Main Menu -->
+<button class="w-full h-touch-target bg-transparent text-on-surface-variant flex items-center justify-center border border-outline-variant hover:text-on-surface hover:border-outline focus:outline-none focus:ring-2 focus:ring-[#22D3EE] focus:ring-offset-0 focus:ring-offset-surface-container mt-md">
+<span class="text-label-mono font-label-mono uppercase">Main Menu</span>
+</button>
+</div>
+<!-- Contextual Stats Snippet (Optional but adds to the high-performance feel) -->
+<div class="mt-xl w-full flex justify-between border-t border-outline-variant pt-md">
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase">Current Score</span>
+<span class="text-label-mono font-label-mono text-primary">14,200</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase">Time</span>
+<span class="text-label-mono font-label-mono text-primary">08:42</span>
+</div>
+</div>
+</div>
+</main>
+</body></html>

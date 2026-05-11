@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tetris Main Menu</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#8e9193",
+                        "on-tertiary-fixed-variant": "#494640",
+                        "on-secondary-container": "#abb9d2",
+                        "surface-container-high": "#2a2a2a",
+                        "error": "#ffb4ab",
+                        "primary-container": "#e0e3e5",
+                        "on-background": "#e5e2e1",
+                        "surface": "#131313",
+                        "surface-bright": "#3a3939",
+                        "on-tertiary-fixed": "#1d1b16",
+                        "inverse-primary": "#5c5f61",
+                        "error-container": "#93000a",
+                        "background": "#131313",
+                        "on-error": "#690005",
+                        "tertiary-container": "#e7e2d9",
+                        "on-surface": "#e5e2e1",
+                        "surface-dim": "#131313",
+                        "outline-variant": "#444749",
+                        "secondary-container": "#3c4a5e",
+                        "secondary-fixed": "#d5e3fd",
+                        "primary-fixed-dim": "#c4c7c9",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "tertiary": "#ffffff",
+                        "tertiary-fixed": "#e7e2d9",
+                        "surface-container": "#201f1f",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary": "#32302a",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "surface-tint": "#c4c7c9",
+                        "on-primary-fixed-variant": "#444749",
+                        "on-surface-variant": "#c4c7c9",
+                        "surface-variant": "#353535",
+                        "primary-fixed": "#e0e3e5",
+                        "surface-container-highest": "#353535",
+                        "inverse-surface": "#e5e2e1",
+                        "inverse-on-surface": "#313030",
+                        "on-primary-container": "#626567",
+                        "on-tertiary-container": "#67645d",
+                        "tertiary-fixed-dim": "#cbc6bd",
+                        "on-primary": "#2d3133",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-primary-fixed": "#191c1e",
+                        "secondary": "#b9c7e0",
+                        "surface-container-low": "#1c1b1b",
+                        "on-secondary": "#233144",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "unit": "4px",
+                        "board-width": "320px",
+                        "sm": "8px",
+                        "xl": "40px",
+                        "touch-target": "44px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Geist"],
+                        "label-mono": ["JetBrains Mono"],
+                        "body-lg": ["Geist"],
+                        "body-md": ["Geist"],
+                        "display": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "headline-lg": ["Geist"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "label-mono": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "display": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex items-center justify-center font-body-md overflow-hidden antialiased">
+<div class="fixed inset-0 z-0 pointer-events-none bg-surface-container-lowest opacity-80" style="background-image: radial-gradient(circle at center, rgba(34, 211, 238, 0.05) 0%, transparent 70%);">
+</div>
+<main class="relative z-10 w-full max-w-2xl px-lg py-xl flex flex-col items-center gap-xl">
+<div class="flex flex-col items-center gap-sm">
+<h1 class="text-display font-display text-primary tracking-tighter">TETRA_CORE</h1>
+<p class="text-label-mono font-label-mono text-on-surface-variant uppercase tracking-widest">v2.1.4_stable</p>
+</div>
+<div class="w-full max-w-sm bg-surface-container border border-outline-variant rounded-lg p-md flex flex-col items-center gap-xs shadow-lg">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wide">High Score</span>
+<span class="text-headline-lg font-headline-lg text-primary font-bold">942,050</span>
+<span class="text-label-mono font-label-mono text-secondary text-[10px]">LVL 42 PRESTIGE</span>
+</div>
+<nav class="w-full max-w-sm flex flex-col gap-md">
+<button class="w-full min-h-[44px] bg-primary text-on-primary rounded-lg py-sm px-md flex items-center justify-center gap-sm hover:brightness-110 active:scale-95 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-background">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span class="text-body-lg font-body-lg font-bold">New Game</span>
+</button>
+<button class="w-full min-h-[44px] bg-transparent text-primary border border-primary rounded-lg py-sm px-md flex items-center justify-center gap-sm hover:bg-surface-container-highest active:scale-95 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-background">
+<span class="material-symbols-outlined text-[20px]">resume</span>
+<span class="text-body-lg font-body-lg font-semibold">Resume</span>
+</button>
+<div class="grid grid-cols-2 gap-md w-full mt-sm">
+<button class="min-h-[44px] bg-surface-container text-on-surface border border-outline-variant rounded-lg py-sm px-md flex items-center justify-center gap-sm hover:bg-surface-container-highest hover:border-outline active:scale-95 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-background">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+<span class="text-label-sm font-label-sm uppercase">Options</span>
+</button>
+<button class="min-h-[44px] bg-surface-container text-on-surface border border-outline-variant rounded-lg py-sm px-md flex items-center justify-center gap-sm hover:bg-surface-container-highest hover:border-outline active:scale-95 transition-all duration-150 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-background">
+<span class="material-symbols-outlined text-[18px]">help</span>
+<span class="text-label-sm font-label-sm uppercase">Help</span>
+</button>
+</div>
+</nav>
+<div class="absolute bottom-lg w-full text-center">
+<p class="text-label-sm font-label-sm text-on-surface-variant/50">PRESS <kbd class="border border-outline-variant rounded px-1 font-label-mono text-[10px]">ENTER</kbd> TO START</p>
+</div>
+</main>
+</body></html>

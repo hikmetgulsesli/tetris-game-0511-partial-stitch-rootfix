@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tetra Core - Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#8e9193",
+                        "on-tertiary-fixed-variant": "#494640",
+                        "on-secondary-container": "#abb9d2",
+                        "surface-container-high": "#2a2a2a",
+                        "error": "#ffb4ab",
+                        "primary-container": "#e0e3e5",
+                        "on-background": "#e5e2e1",
+                        "surface": "#131313",
+                        "surface-bright": "#3a3939",
+                        "on-tertiary-fixed": "#1d1b16",
+                        "inverse-primary": "#5c5f61",
+                        "error-container": "#93000a",
+                        "background": "#131313",
+                        "on-error": "#690005",
+                        "tertiary-container": "#e7e2d9",
+                        "on-surface": "#e5e2e1",
+                        "surface-dim": "#131313",
+                        "outline-variant": "#444749",
+                        "secondary-container": "#3c4a5e",
+                        "secondary-fixed": "#d5e3fd",
+                        "primary-fixed-dim": "#c4c7c9",
+                        "on-secondary-fixed": "#0d1c2f",
+                        "tertiary": "#ffffff",
+                        "tertiary-fixed": "#e7e2d9",
+                        "surface-container": "#201f1f",
+                        "on-error-container": "#ffdad6",
+                        "on-tertiary": "#32302a",
+                        "on-secondary-fixed-variant": "#3a485c",
+                        "surface-tint": "#c4c7c9",
+                        "on-primary-fixed-variant": "#444749",
+                        "on-surface-variant": "#c4c7c9",
+                        "surface-variant": "#353535",
+                        "primary-fixed": "#e0e3e5",
+                        "surface-container-highest": "#353535",
+                        "inverse-surface": "#e5e2e1",
+                        "inverse-on-surface": "#313030",
+                        "on-primary-container": "#626567",
+                        "on-tertiary-container": "#67645d",
+                        "tertiary-fixed-dim": "#cbc6bd",
+                        "on-primary": "#2d3133",
+                        "surface-container-lowest": "#0e0e0e",
+                        "on-primary-fixed": "#191c1e",
+                        "secondary": "#b9c7e0",
+                        "surface-container-low": "#1c1b1b",
+                        "on-secondary": "#233144",
+                        "secondary-fixed-dim": "#b9c7e0",
+                        "primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "md": "16px",
+                        "xs": "4px",
+                        "unit": "4px",
+                        "board-width": "320px",
+                        "sm": "8px",
+                        "xl": "40px",
+                        "touch-target": "44px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Geist"],
+                        "label-mono": ["JetBrains Mono"],
+                        "body-lg": ["Geist"],
+                        "body-md": ["Geist"],
+                        "display": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "headline-lg": ["Geist"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "label-mono": ["14px", { "lineHeight": "1.4", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "display": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .slider-thumb::-webkit-slider-thumb {
+                @apply appearance-none w-4 h-4 bg-primary rounded-full cursor-pointer border-2 border-surface;
+            }
+            .slider-thumb::-moz-range-thumb {
+                @apply w-4 h-4 bg-primary rounded-full cursor-pointer border-2 border-surface;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline-variant w-full px-lg py-md z-50 h-[64px] flex justify-between items-center fixed top-0">
+<div class="text-headline-md font-headline-md tracking-tighter text-primary dark:text-primary">
+            TETRA_CORE
+        </div>
+<nav class="hidden md:flex space-x-lg">
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium text-label-sm font-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">GAME</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium text-label-sm font-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">LEADERBOARD</a>
+<a class="text-primary dark:text-primary border-b-2 border-primary pb-1 font-bold text-label-sm font-label-sm scale-95 transition-transform duration-150 focus:ring-2 focus:ring-secondary" href="#">SETTINGS</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant font-medium text-label-sm font-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">HELP</a>
+</nav>
+<div class="flex items-center">
+<button class="text-primary dark:text-primary hover:text-primary dark:hover:text-primary transition-colors duration-200 flex items-center justify-center w-touch-target h-touch-target">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<div class="flex flex-1 pt-[64px]">
+<!-- Main Content Area -->
+<main class="flex-1 w-full max-w-3xl mx-auto px-lg py-xl">
+<h1 class="text-display font-display text-primary mb-xl">System Setup</h1>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Audio Settings Panel -->
+<section class="bg-surface-container rounded-xl border border-outline-variant p-lg flex flex-col gap-md">
+<div class="flex items-center gap-sm mb-sm border-b border-outline-variant pb-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="volume_up">volume_up</span>
+<h2 class="text-headline-md font-headline-md text-primary">Audio</h2>
+</div>
+<!-- Master Volume -->
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-center">
+<label class="text-label-sm font-label-sm text-on-surface-variant">Master Volume</label>
+<span class="text-label-mono font-label-mono text-primary">100%</span>
+</div>
+<input class="w-full h-1 bg-surface-variant rounded-full appearance-none slider-thumb outline-none focus:ring-2 focus:ring-[#22D3EE] focus:ring-offset-2 focus:ring-offset-surface-container" max="100" min="0" type="range" value="100"/>
+</div>
+<!-- Music Toggle -->
+<div class="flex justify-between items-center mt-sm">
+<label class="text-body-md font-body-md text-on-surface">Music</label>
+<button aria-pressed="true" class="relative inline-flex h-6 w-11 items-center rounded-full bg-primary transition-colors focus:outline-none focus:ring-2 focus:ring-[#22D3EE] focus:ring-offset-2 focus:ring-offset-surface-container">
+<span class="inline-block h-4 w-4 translate-x-6 rounded-full bg-surface transition-transform"></span>
+</button>
+</div>
+<!-- SFX Toggle -->
+<div class="flex justify-between items-center">
+<label class="text-body-md font-body-md text-on-surface">Sound Effects</label>
+<button aria-pressed="true" class="relative inline-flex h-6 w-11 items-center rounded-full bg-primary transition-colors focus:outline-none focus:ring-2 focus:ring-[#22D3EE] focus:ring-offset-2 focus:ring-offset-surface-container">
+<span class="inline-block h-4 w-4 translate-x-6 rounded-full bg-surface transition-transform"></span>
+</button>
+</div>
+</section>
+<!-- Difficulty Settings Panel -->
+<section class="bg-surface-container rounded-xl border border-outline-variant p-lg flex flex-col gap-md">
+<div class="flex items-center gap-sm mb-sm border-b border-outline-variant pb-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="speed">speed</span>
+<h2 class="text-headline-md font-headline-md text-primary">Difficulty</h2>
+</div>
+<!-- Starting Level -->
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-center">
+<label class="text-label-sm font-label-sm text-on-surface-variant">Starting Level</label>
+<span class="text-label-mono font-label-mono text-primary">LVL 01</span>
+</div>
+<input class="w-full h-1 bg-surface-variant rounded-full appearance-none slider-thumb outline-none focus:ring-2 focus:ring-[#22D3EE] focus:ring-offset-2 focus:ring-offset-surface-container" max="15" min="1" type="range" value="1"/>
+<div class="flex justify-between text-label-mono font-label-mono text-on-surface-variant text-xs opacity-50 mt-1">
+<span>1</span>
+<span>15</span>
+</div>
+</div>
+<!-- Ghost Piece Toggle -->
+<div class="flex justify-between items-center mt-sm">
+<div class="flex flex-col">
+<label class="text-body-md font-body-md text-on-surface">Ghost Piece</label>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Show drop preview</span>
+</div>
+<button aria-pressed="true" class="relative inline-flex h-6 w-11 items-center rounded-full bg-primary transition-colors focus:outline-none focus:ring-2 focus:ring-[#22D3EE] focus:ring-offset-2 focus:ring-offset-surface-container">
+<span class="inline-block h-4 w-4 translate-x-6 rounded-full bg-surface transition-transform"></span>
+</button>
+</div>
+</section>
+<!-- Controls Settings Panel -->
+<section class="bg-surface-container rounded-xl border border-outline-variant p-lg flex flex-col gap-md md:col-span-2">
+<div class="flex items-center gap-sm mb-sm border-b border-outline-variant pb-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="gamepad">gamepad</span>
+<h2 class="text-headline-md font-headline-md text-primary">Controls</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="flex flex-col gap-md">
+<!-- Sensitivity -->
+<div class="flex flex-col gap-sm">
+<div class="flex justify-between items-center">
+<label class="text-label-sm font-label-sm text-on-surface-variant">Input Sensitivity</label>
+<span class="text-label-mono font-label-mono text-primary">High</span>
+</div>
+<input class="w-full h-1 bg-surface-variant rounded-full appearance-none slider-thumb outline-none focus:ring-2 focus:ring-[#22D3EE] focus:ring-offset-2 focus:ring-offset-surface-container" max="3" min="1" type="range" value="3"/>
+</div>
+<!-- Vibration Toggle -->
+<div class="flex justify-between items-center mt-sm">
+<div class="flex flex-col">
+<label class="text-body-md font-body-md text-on-surface">Haptic Feedback</label>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Controller vibration</span>
+</div>
+<button aria-pressed="false" class="relative inline-flex h-6 w-11 items-center rounded-full bg-surface-variant transition-colors focus:outline-none focus:ring-2 focus:ring-[#22D3EE] focus:ring-offset-2 focus:ring-offset-surface-container">
+<span class="inline-block h-4 w-4 translate-x-1 rounded-full bg-outline-variant transition-transform"></span>
+</button>
+</div>
+</div>
+<!-- Keybinding Preview (Static for design) -->
+<div class="bg-surface rounded-lg border border-outline-variant p-md">
+<h3 class="text-label-sm font-label-sm text-on-surface-variant mb-md uppercase tracking-wider">Current Bindings</h3>
+<div class="space-y-sm">
+<div class="flex justify-between items-center py-xs border-b border-surface-variant">
+<span class="text-body-md font-body-md text-on-surface">Move Left</span>
+<kbd class="text-label-mono font-label-mono text-primary bg-surface-container px-2 py-1 rounded border border-outline-variant">Left Arrow</kbd>
+</div>
+<div class="flex justify-between items-center py-xs border-b border-surface-variant">
+<span class="text-body-md font-body-md text-on-surface">Move Right</span>
+<kbd class="text-label-mono font-label-mono text-primary bg-surface-container px-2 py-1 rounded border border-outline-variant">Right Arrow</kbd>
+</div>
+<div class="flex justify-between items-center py-xs border-b border-surface-variant">
+<span class="text-body-md font-body-md text-on-surface">Rotate</span>
+<kbd class="text-label-mono font-label-mono text-primary bg-surface-container px-2 py-1 rounded border border-outline-variant">Up Arrow</kbd>
+</div>
+<div class="flex justify-between items-center py-xs border-b border-surface-variant">
+<span class="text-body-md font-body-md text-on-surface">Hard Drop</span>
+<kbd class="text-label-mono font-label-mono text-primary bg-surface-container px-2 py-1 rounded border border-outline-variant">Spacebar</kbd>
+</div>
+</div>
+<button class="mt-md w-full py-2 border border-outline-variant rounded text-label-sm font-label-sm text-on-surface-variant hover:text-primary hover:border-primary transition-colors focus:outline-none focus:ring-2 focus:ring-[#22D3EE]">
+                                REBIND CONTROLS
+                            </button>
+</div>
+</div>
+</section>
+<!-- Action Buttons -->
+<div class="md:col-span-2 flex justify-end gap-md mt-md">
+<button class="px-lg py-sm border border-outline-variant text-on-surface rounded font-label-sm text-label-sm hover:bg-surface-container-high transition-colors focus:outline-none focus:ring-2 focus:ring-[#22D3EE] min-h-[44px] min-w-[44px]">
+                        RESET DEFAULTS
+                    </button>
+<button class="px-lg py-sm bg-primary text-on-primary rounded font-label-sm text-label-sm hover:bg-surface-tint transition-colors focus:outline-none focus:ring-2 focus:ring-[#22D3EE] min-h-[44px] min-w-[44px]">
+                        APPLY CHANGES
+                    </button>
+</div>
+</div>
+</main>
+</div>
+</body></html>
