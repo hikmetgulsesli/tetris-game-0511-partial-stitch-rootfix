@@ -33,6 +33,76 @@ export interface GameBoardProps {
   actions?: Partial<Record<GameBoardActionId, () => void>>;
 }
 
+/* Inline SVG icons — Material Symbols are not allowed per UI contract */
+function IconAccount({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
+    </svg>
+  );
+}
+
+function IconPerson({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
+    </svg>
+  );
+}
+
+function IconGame({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="2" y="6" width="20" height="12" rx="2" />
+      <path d="M6 12h4" />
+      <path d="M8 10v4" />
+      <circle cx="17" cy="12" r="1" fill="currentColor" />
+      <circle cx="15" cy="10" r="1" fill="currentColor" />
+    </svg>
+  );
+}
+
+function IconSwords({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M14.5 17.5 3 6V3h3l11.5 11.5" />
+      <path d="m13 19 6-6" />
+      <path d="m16 16 4 4" />
+      <path d="m19 21 2-2" />
+    </svg>
+  );
+}
+
+function IconExercise({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M6.5 6.5h11" />
+      <path d="M6.5 17.5h11" />
+      <path d="M6 20v-3a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3" />
+      <path d="M6 4v3a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4" />
+    </svg>
+  );
+}
+
+function IconSparkles({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+    </svg>
+  );
+}
+
+function IconPause({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <rect x="6" y="4" width="4" height="16" rx="1" />
+      <rect x="14" y="4" width="4" height="16" rx="1" />
+    </svg>
+  );
+}
+
 function renderBoardWithPiece(
   board: Cell[][],
   piece: { type: TetrominoType; x: number; y: number; rotation: number } | null,
@@ -130,7 +200,7 @@ export function GameBoard({
   return (
     <>
       {/* TopNavBar */}
-      <nav className="bg-surface dark:bg-surface text-primary dark:text-primary flex justify-between items-center w-full px-lg py-md max-w-full z-50 h-[64px] border-b border-outline-variant dark:border-outline-variant fixed top-0 docked full-width top-0">
+      <nav className="bg-surface dark:bg-surface text-primary dark:text-primary flex justify-between items-center w-full px-lg py-md max-w-full z-50 h-[64px] border-b border-outline-variant dark:border-outline-variant fixed top-0">
       <div className="text-headline-md font-headline-md tracking-tighter text-primary dark:text-primary">
                   TETRA_CORE
               </div>
@@ -141,8 +211,8 @@ export function GameBoard({
       <span className="text-on-surface-variant dark:text-on-surface-variant font-medium font-label-sm text-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200 cursor-default">HELP</span>
       </div>
       <div className="flex items-center">
-      <button className="hover:text-primary dark:hover:text-primary transition-colors duration-200 scale-95 transition-transform duration-150 focus:ring-2 focus:ring-secondary rounded-full p-xs" type="button" data-action-id="account-circle-1" onClick={actions?.["account-circle-1"]}>
-      <span className="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+      <button className="hover:text-primary dark:hover:text-primary transition-colors duration-200 scale-95 transition-transform duration-150 focus:ring-2 focus:ring-secondary rounded-full p-xs" type="button" data-action-id="account-circle-1" onClick={actions?.["account-circle-1"]} aria-label="Account">
+      <IconAccount className="w-6 h-6" />
       </button>
       </div>
       </nav>
@@ -152,7 +222,7 @@ export function GameBoard({
       <div className="p-lg border-b border-outline-variant dark:border-outline-variant mb-md">
       <div className="flex items-center gap-md">
       <div className="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center">
-      <span className="material-symbols-outlined text-on-surface-variant">person</span>
+      <IconPerson className="w-5 h-5 text-on-surface-variant" />
       </div>
       <div>
       <div className="font-label-sm text-label-sm text-primary">OPERATOR_01</div>
@@ -161,25 +231,25 @@ export function GameBoard({
       </div>
       </div>
       <nav className="flex flex-col gap-xs flex-1">
-      <span className="bg-secondary-container text-on-secondary-container rounded-lg mx-2 flex items-center gap-md p-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all translate-x-1 duration-200 font-label-sm text-label-sm cursor-default">
-      <span className="material-symbols-outlined" data-icon="videogame_asset">videogame_asset</span>
+      <span className="bg-secondary-container text-on-secondary-container rounded-lg mx-2 flex items-center gap-md p-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors transition-transform translate-x-1 duration-200 font-label-sm text-label-sm cursor-default">
+      <IconGame className="w-5 h-5" />
                           SOLO MODE
                       </span>
-      <span className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all font-label-sm text-label-sm cursor-default">
-      <span className="material-symbols-outlined" data-icon="swords">swords</span>
+      <span className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors duration-200 font-label-sm text-label-sm cursor-default">
+      <IconSwords className="w-5 h-5" />
                           VERSUS
                       </span>
-      <span className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all font-label-sm text-label-sm cursor-default">
-      <span className="material-symbols-outlined" data-icon="exercise">exercise</span>
+      <span className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors duration-200 font-label-sm text-label-sm cursor-default">
+      <IconExercise className="w-5 h-5" />
                           PRACTICE
                       </span>
-      <span className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all font-label-sm text-label-sm cursor-default">
-      <span className="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+      <span className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors duration-200 font-label-sm text-label-sm cursor-default">
+      <IconSparkles className="w-5 h-5" />
                           ZEN
                       </span>
       </nav>
       <div className="p-md mt-auto">
-      <button className="w-full bg-primary text-on-primary py-sm px-md rounded-DEFAULT font-label-sm text-label-sm hover:brightness-110 transition-all flex justify-center items-center gap-xs" type="button" data-action-id="new-game-2" onClick={actions?.["new-game-2"]}>
+      <button className="w-full bg-primary text-on-primary py-sm px-md rounded-DEFAULT font-label-sm text-label-sm hover:brightness-110 transition-[filter] duration-200 flex justify-center items-center gap-xs" type="button" data-action-id="new-game-2" onClick={actions?.["new-game-2"]}>
                           NEW GAME
                       </button>
       </div>
@@ -188,7 +258,7 @@ export function GameBoard({
       <main className="flex-1 lg:ml-[280px] bg-background flex items-center justify-center p-lg relative">
       {/* Floating Pause Button */}
       <button className="absolute top-lg right-lg flex items-center gap-xs px-md py-sm bg-surface-container text-on-surface border border-outline-variant rounded-md hover:bg-surface-container-high transition-colors focus:ring-2 focus:ring-secondary z-10" type="button" data-action-id="pause-pause-3" onClick={actions?.["pause-pause-3"]}>
-      <span className="material-symbols-outlined text-[18px]">pause</span>
+      <IconPause className="w-[18px] h-[18px]" />
       <span className="font-label-sm text-label-sm">PAUSE</span>
       </button>
       <div className="flex flex-col md:flex-row items-center md:items-start gap-lg lg:gap-xl">
