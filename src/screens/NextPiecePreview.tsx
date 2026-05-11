@@ -16,6 +16,68 @@ export interface NextPiecePreviewProps {
   actions?: Partial<Record<NextPiecePreviewActionId, () => void>>;
 }
 
+/* Inline SVG icons — Material Symbols are not allowed by design contract */
+function AccountCircleIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="10" r="3" />
+      <path d="M7 18c0-2 2.5-3 5-3s5 1 5 3" />
+    </svg>
+  );
+}
+
+function PersonIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4 20c0-4 4-6 8-6s8 2 8 6" />
+    </svg>
+  );
+}
+
+function GamepadIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="2" y="6" width="20" height="12" rx="6" />
+      <path d="M6 12h4" />
+      <path d="M8 10v4" />
+      <circle cx="16" cy="11" r="1" fill="currentColor" stroke="none" />
+      <circle cx="18" cy="13" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+function SwordsIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M14.5 17.5L3 6l4-4 11.5 11.5" />
+      <path d="M13 19l6-6" />
+      <path d="M16 16l4 4" />
+      <path d="M19 21l2-2" />
+    </svg>
+  );
+}
+
+function ExerciseIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="4" r="2" />
+      <path d="M10 8l-3 6h2l1 6" />
+      <path d="M14 8l3 6h-2l-1 6" />
+    </svg>
+  );
+}
+
+function SparkleIcon({ className = '' }: { className?: string }) {
+  return (
+    <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5z" />
+      <path d="M18 16l1 3 3 1-3 1-1 3-1-3-3-1 3-1z" />
+    </svg>
+  );
+}
+
 function MiniPiece({ type, size = 'md' }: { type: TetrominoType; size?: 'md' | 'sm' | 'xs' }) {
   const tetromino = getTetromino(type);
   if (!tetromino) return null;
@@ -67,8 +129,8 @@ export function NextPiecePreview({ nextPieces = [], actions }: NextPiecePreviewP
           </div>
         </div>
         <div className="flex items-center">
-          <button className="text-on-surface-variant hover:text-primary transition-colors duration-200 flex items-center justify-center h-touch-target w-touch-target" type="button" data-action-id="account-circle-1" onClick={actions?.["account-circle-1"]}>
-            <span className="material-symbols-outlined">account_circle</span>
+          <button className="text-on-surface-variant hover:text-primary transition-colors duration-200 flex items-center justify-center h-touch-target w-touch-target" type="button" data-action-id="account-circle-1" onClick={actions?.["account-circle-1"]} aria-label="Account">
+            <AccountCircleIcon />
           </button>
         </div>
       </nav>
@@ -78,7 +140,7 @@ export function NextPiecePreview({ nextPieces = [], actions }: NextPiecePreviewP
         <aside className="hidden lg:flex flex-col h-screen fixed left-0 top-0 pt-[64px] pb-lg w-[280px] z-40 bg-surface-container dark:bg-surface-container border-r border-outline-variant dark:border-outline-variant">
           <div className="p-md mb-md border-b border-outline-variant flex items-center gap-md">
             <div className="w-12 h-12 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden">
-              <span className="material-symbols-outlined text-on-surface-variant">person</span>
+              <PersonIcon className="text-on-surface-variant" />
             </div>
             <div>
               <h2 className="text-label-sm font-label-sm text-primary">OPERATOR_01</h2>
@@ -87,19 +149,19 @@ export function NextPiecePreview({ nextPieces = [], actions }: NextPiecePreviewP
           </div>
           <nav className="flex-1 flex flex-col gap-xs py-md">
             <span className="bg-secondary-container text-on-secondary-container rounded-lg mx-2 flex items-center gap-md p-sm text-label-sm font-label-sm translate-x-1 duration-200">
-              <span className="material-symbols-outlined">videogame_asset</span>
+              <GamepadIcon />
               SOLO MODE
             </span>
-            <span className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-sm text-label-sm font-label-sm hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all">
-              <span className="material-symbols-outlined">swords</span>
+            <span className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-sm text-label-sm font-label-sm hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors duration-200">
+              <SwordsIcon />
               VERSUS
             </span>
-            <span className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-sm text-label-sm font-label-sm hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all">
-              <span className="material-symbols-outlined">exercise</span>
+            <span className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-sm text-label-sm font-label-sm hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors duration-200">
+              <ExerciseIcon />
               PRACTICE
             </span>
-            <span className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-sm text-label-sm font-label-sm hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all">
-              <span className="material-symbols-outlined">auto_awesome</span>
+            <span className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-sm text-label-sm font-label-sm hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors duration-200">
+              <SparkleIcon />
               ZEN
             </span>
           </nav>
