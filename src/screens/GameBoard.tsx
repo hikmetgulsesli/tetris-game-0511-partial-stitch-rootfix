@@ -12,6 +12,7 @@ import {
   BOARD_HEIGHT,
   BOARD_WIDTH,
   Cell,
+  createEmptyBoard,
   getShape,
   getTetromino,
   TetrominoType,
@@ -110,7 +111,7 @@ function StatCard({ label, value }: { label: string; value: string | number }) {
 }
 
 export function GameBoard({
-  board,
+  board = createEmptyBoard(),
   currentPiece,
   nextPiece,
   holdPiece,
@@ -122,7 +123,7 @@ export function GameBoard({
   actions,
 }: GameBoardProps) {
   const renderedBoard = useMemo(
-    () => renderBoardWithPiece(board ?? [], currentPiece ?? null, ghostY),
+    () => renderBoardWithPiece(board, currentPiece ?? null, ghostY),
     [board, currentPiece, ghostY]
   );
 
@@ -134,10 +135,10 @@ export function GameBoard({
                   TETRA_CORE
               </div>
       <div className="hidden md:flex items-center gap-lg">
-      <a className="text-primary dark:text-primary border-b-2 border-primary pb-1 font-bold font-label-sm text-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">GAME</a>
-      <a className="text-on-surface-variant dark:text-on-surface-variant font-medium font-label-sm text-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">LEADERBOARD</a>
-      <a className="text-on-surface-variant dark:text-on-surface-variant font-medium font-label-sm text-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">SETTINGS</a>
-      <a className="text-on-surface-variant dark:text-on-surface-variant font-medium font-label-sm text-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200" href="#">HELP</a>
+      <span className="text-primary dark:text-primary border-b-2 border-primary pb-1 font-bold font-label-sm text-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200 cursor-default">GAME</span>
+      <span className="text-on-surface-variant dark:text-on-surface-variant font-medium font-label-sm text-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200 cursor-default">LEADERBOARD</span>
+      <span className="text-on-surface-variant dark:text-on-surface-variant font-medium font-label-sm text-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200 cursor-default">SETTINGS</span>
+      <span className="text-on-surface-variant dark:text-on-surface-variant font-medium font-label-sm text-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200 cursor-default">HELP</span>
       </div>
       <div className="flex items-center">
       <button className="hover:text-primary dark:hover:text-primary transition-colors duration-200 scale-95 transition-transform duration-150 focus:ring-2 focus:ring-secondary rounded-full p-xs" type="button" data-action-id="account-circle-1" onClick={actions?.["account-circle-1"]}>
@@ -160,22 +161,22 @@ export function GameBoard({
       </div>
       </div>
       <nav className="flex flex-col gap-xs flex-1">
-      <a className="bg-secondary-container text-on-secondary-container rounded-lg mx-2 flex items-center gap-md p-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all translate-x-1 duration-200 font-label-sm text-label-sm" href="#">
+      <span className="bg-secondary-container text-on-secondary-container rounded-lg mx-2 flex items-center gap-md p-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all translate-x-1 duration-200 font-label-sm text-label-sm cursor-default">
       <span className="material-symbols-outlined" data-icon="videogame_asset">videogame_asset</span>
                           SOLO MODE
-                      </a>
-      <a className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all font-label-sm text-label-sm" href="#">
+                      </span>
+      <span className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all font-label-sm text-label-sm cursor-default">
       <span className="material-symbols-outlined" data-icon="swords">swords</span>
                           VERSUS
-                      </a>
-      <a className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all font-label-sm text-label-sm" href="#">
+                      </span>
+      <span className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all font-label-sm text-label-sm cursor-default">
       <span className="material-symbols-outlined" data-icon="exercise">exercise</span>
                           PRACTICE
-                      </a>
-      <a className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all font-label-sm text-label-sm" href="#">
+                      </span>
+      <span className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all font-label-sm text-label-sm cursor-default">
       <span className="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
                           ZEN
-                      </a>
+                      </span>
       </nav>
       <div className="p-md mt-auto">
       <button className="w-full bg-primary text-on-primary py-sm px-md rounded-DEFAULT font-label-sm text-label-sm hover:brightness-110 transition-all flex justify-center items-center gap-xs" type="button" data-action-id="new-game-2" onClick={actions?.["new-game-2"]}>
