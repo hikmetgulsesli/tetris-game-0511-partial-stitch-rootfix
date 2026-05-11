@@ -273,8 +273,6 @@ function ActiveGameBoard() {
 
 export default function App() {
   const { state, actions } = useAppContext();
-  const modeRef = useRef(state.mode);
-  modeRef.current = state.mode;
 
   // Mobile touch controls
   const touchStartRef = useRef<{ x: number; y: number } | null>(null);

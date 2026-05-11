@@ -10,7 +10,6 @@ import {
   getShape,
   getTetromino,
   LINE_SCORES,
-  Position,
   TetrominoType,
 } from '../types/domain';
 import { getHighScore, saveHighScore } from '../utils/storage';
@@ -134,7 +133,6 @@ export function createInitialState(): GameState {
 export function useAppState(): UseAppStateReturn {
   const [state, setState] = useState<GameState>(createInitialState);
   const stateRef = useRef(state);
-  const lastTimeRef = useRef(0);
   const rafRef = useRef(0);
 
   useEffect(() => {
@@ -336,16 +334,24 @@ export function useAppState(): UseAppStateReturn {
       if (prev.mode !== 'playing' || !prev.currentPiece) return prev;
       const { type, x, y, rotation } = prev.currentPiece;
       const newRotation = (rotation + 1) % 4;
-      // Simple wall kick: try original, then left, then right
-      const kicks = [0, -1, 1, -2, 2];
-      for (const kick of kicks) {
-        if (isValidPosition(prev.board, type, newRotation, x + kick, y)) {
+      // Wall kick: try original, then left/right, then up
+      const kicks = [
+        [0, 0],
+        [-1, 0],
+        [1, 0],
+        [-2, 0],
+        [2, 0],
+        [0, -1],
+      ];
+      for (const [kx, ky] of kicks) {
+        if (isValidPosition(prev.board, type, newRotation, x + kx, y + ky)) {
           return {
             ...prev,
             currentPiece: {
               ...prev.currentPiece,
               rotation: newRotation,
-              x: x + kick,
+              x: x + kx,
+              y: y + ky,
             },
           };
         }
@@ -388,12 +394,13 @@ export function useAppState(): UseAppStateReturn {
       if (prev.mode !== 'playing' || !prev.currentPiece || !prev.canHold) return prev;
       const currentType = prev.currentPiece.type;
       if (prev.holdPiece === null) {
-        return {
-          ...prev,
-          holdPiece: currentType,
-          currentPiece: null,
-          canHold: false,
-        };
+        const nextState = spawnPiece(
+          { ...prev, holdPiece: currentType, currentPiece: null },
+          prev.nextPiece!
+        );
+        return nextState
+          ? { ...nextState, canHold: false }
+          : { ...prev, holdPiece: currentType, currentPiece: null, canHold: false };
       }
       const held = prev.holdPiece;
       const spawn = spawnPiece(
