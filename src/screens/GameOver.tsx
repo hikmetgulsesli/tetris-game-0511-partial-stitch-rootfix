@@ -11,9 +11,17 @@ export type GameOverActionId = "replay-play-again-1" | "share-share-score-2" | "
 
 export interface GameOverProps {
   actions?: Partial<Record<GameOverActionId, () => void>>;
+  score?: number;
+  level?: number;
+  lines?: number;
+  isNewHighScore?: boolean;
 }
 
-export function GameOver({ actions }: GameOverProps) {
+function formatNumber(n: number): string {
+  return n.toLocaleString('en-US');
+}
+
+export function GameOver({ actions, score = 0, level = 1, lines = 0, isNewHighScore = false }: GameOverProps) {
   return (
     <>
       {/* OVERLAY BACKGROUND (Blurred out game board simulation) */}
@@ -34,26 +42,28 @@ export function GameOver({ actions }: GameOverProps) {
       <p className="text-body-md font-body-md text-on-surface-variant uppercase tracking-widest">End of Simulation</p>
       </div>
       {/* HIGH SCORE BADGE */}
+      {isNewHighScore && (
       <div className="bg-secondary-container/20 border border-secondary text-secondary rounded-full px-md py-xs flex items-center gap-sm mb-lg">
       <span className="material-symbols-outlined text-[16px]" style={{fontVariationSettings: "'FILL' 1"}}>trophy</span>
       <span className="text-label-sm font-label-sm uppercase tracking-wider">New Personal Best</span>
       </div>
+      )}
       {/* STATS BENTO GRID */}
       <div className="w-full grid grid-cols-2 gap-sm mb-xl">
       {/* FINAL SCORE (Large spanning top) */}
       <div className="col-span-2 bg-surface-container border border-outline-variant rounded p-md flex flex-col items-center justify-center h-[120px]">
       <span className="text-label-sm font-label-sm text-on-surface-variant mb-xs">FINAL SCORE</span>
-      <span className="text-headline-lg font-label-mono text-primary">142,850</span>
+      <span className="text-headline-lg font-label-mono text-primary" data-testid="final-score">{formatNumber(score)}</span>
       </div>
       {/* LEVEL */}
       <div className="bg-surface-container border border-outline-variant rounded p-md flex flex-col items-center justify-center h-[96px]">
       <span className="text-label-sm font-label-sm text-on-surface-variant mb-xs">LEVEL REACHED</span>
-      <span className="text-headline-md font-label-mono text-primary">12</span>
+      <span className="text-headline-md font-label-mono text-primary" data-testid="level-reached">{level}</span>
       </div>
       {/* LINES */}
       <div className="bg-surface-container border border-outline-variant rounded p-md flex flex-col items-center justify-center h-[96px]">
       <span className="text-label-sm font-label-sm text-on-surface-variant mb-xs">LINES CLEARED</span>
-      <span className="text-headline-md font-label-mono text-primary">114</span>
+      <span className="text-headline-md font-label-mono text-primary" data-testid="lines-cleared">{lines}</span>
       </div>
       </div>
       {/* ACTIONS */}
