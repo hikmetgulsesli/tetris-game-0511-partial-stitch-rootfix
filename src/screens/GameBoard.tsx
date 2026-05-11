@@ -118,7 +118,7 @@ function renderBoardWithPiece(
         const gx = piece.x + col;
         const gy = ghostY + row;
         if (gy >= 0 && gy < BOARD_HEIGHT && gx >= 0 && gx < BOARD_WIDTH && rendered[gy][gx] === null) {
-          rendered[gy][gx] = `ghost-${piece.type}` as Cell;
+          rendered[gy][gx] = `ghost-${piece.type}`;
         }
       }
     }
@@ -150,7 +150,7 @@ function MiniPiece({ type }: { type: TetrominoType }) {
         gridTemplateColumns: `repeat(${cols}, 1fr)`,
         gridTemplateRows: `repeat(${rows}, 1fr)`,
         width: '100%',
-        height: '100%',
+        aspectRatio: `${cols} / ${rows}`,
       }}
     >
       {shape.map((row, ri) =>
@@ -200,15 +200,15 @@ export function GameBoard({
   return (
     <>
       {/* TopNavBar */}
-      <nav className="bg-surface dark:bg-surface text-primary dark:text-primary flex justify-between items-center w-full px-lg py-md max-w-full z-50 h-[64px] border-b border-outline-variant dark:border-outline-variant fixed top-0">
+      <nav className="bg-surface dark:bg-surface text-primary dark:text-primary flex justify-between items-center w-full px-lg py-md max-w-full z-50 h-[64px] border-b border-outline-variant dark:border-outline-variant docked full-width top-0 fixed top-0">
       <div className="text-headline-md font-headline-md tracking-tighter text-primary dark:text-primary">
                   TETRA_CORE
               </div>
       <div className="hidden md:flex items-center gap-lg">
-      <span className="text-primary dark:text-primary border-b-2 border-primary pb-1 font-bold font-label-sm text-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200 cursor-default">GAME</span>
-      <span className="text-on-surface-variant dark:text-on-surface-variant font-medium font-label-sm text-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200 cursor-default">LEADERBOARD</span>
-      <span className="text-on-surface-variant dark:text-on-surface-variant font-medium font-label-sm text-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200 cursor-default">SETTINGS</span>
-      <span className="text-on-surface-variant dark:text-on-surface-variant font-medium font-label-sm text-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200 cursor-default">HELP</span>
+      <a href="#" className="text-primary dark:text-primary border-b-2 border-primary pb-1 font-bold font-label-sm text-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200">GAME</a>
+      <a href="#" className="text-on-surface-variant dark:text-on-surface-variant font-medium font-label-sm text-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200">LEADERBOARD</a>
+      <a href="#" className="text-on-surface-variant dark:text-on-surface-variant font-medium font-label-sm text-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200">SETTINGS</a>
+      <a href="#" className="text-on-surface-variant dark:text-on-surface-variant font-medium font-label-sm text-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200">HELP</a>
       </div>
       <div className="flex items-center">
       <button className="hover:text-primary dark:hover:text-primary transition-colors duration-200 scale-95 transition-transform duration-150 focus:ring-2 focus:ring-secondary rounded-full p-xs" type="button" data-action-id="account-circle-1" onClick={actions?.["account-circle-1"]} aria-label="Account">
@@ -231,22 +231,22 @@ export function GameBoard({
       </div>
       </div>
       <nav className="flex flex-col gap-xs flex-1">
-      <span className="bg-secondary-container text-on-secondary-container rounded-lg mx-2 flex items-center gap-md p-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors transition-transform translate-x-1 duration-200 font-label-sm text-label-sm cursor-default">
+      <a href="#" className="bg-secondary-container text-on-secondary-container rounded-lg mx-2 flex items-center gap-md p-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors transition-transform translate-x-1 duration-200 font-label-sm text-label-sm" onClick={(e) => e.preventDefault()}>
       <IconGame className="w-5 h-5" />
                           SOLO MODE
-                      </span>
-      <span className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors duration-200 font-label-sm text-label-sm cursor-default">
+                      </a>
+      <a href="#" className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors duration-200 font-label-sm text-label-sm" onClick={(e) => e.preventDefault()}>
       <IconSwords className="w-5 h-5" />
                           VERSUS
-                      </span>
-      <span className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors duration-200 font-label-sm text-label-sm cursor-default">
+                      </a>
+      <a href="#" className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors duration-200 font-label-sm text-label-sm" onClick={(e) => e.preventDefault()}>
       <IconExercise className="w-5 h-5" />
                           PRACTICE
-                      </span>
-      <span className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors duration-200 font-label-sm text-label-sm cursor-default">
+                      </a>
+      <a href="#" className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors duration-200 font-label-sm text-label-sm" onClick={(e) => e.preventDefault()}>
       <IconSparkles className="w-5 h-5" />
                           ZEN
-                      </span>
+                      </a>
       </nav>
       <div className="p-md mt-auto">
       <button className="w-full bg-primary text-on-primary py-sm px-md rounded-DEFAULT font-label-sm text-label-sm hover:brightness-110 transition-[filter] duration-200 flex justify-center items-center gap-xs" type="button" data-action-id="new-game-2" onClick={actions?.["new-game-2"]}>
@@ -293,7 +293,7 @@ export function GameBoard({
           {renderedBoard.map((row, ri) =>
             row.map((cell, ci) => {
               const isGhost = typeof cell === 'string' && cell.startsWith('ghost-');
-              const type = isGhost ? (cell.replace('ghost-', '') as TetrominoType) : cell;
+              const type: TetrominoType | null = cell === null ? null : isGhost ? cell.replace('ghost-', '') as TetrominoType : cell as TetrominoType;
               const tetromino = type ? getTetromino(type) : null;
               return (
                 <div
