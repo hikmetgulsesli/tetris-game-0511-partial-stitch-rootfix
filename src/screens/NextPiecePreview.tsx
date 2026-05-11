@@ -122,10 +122,10 @@ export function NextPiecePreview({ nextPieces = [], actions }: NextPiecePreviewP
         <div className="flex items-center gap-lg">
           <span className="text-headline-md font-headline-md tracking-tighter text-primary dark:text-primary">TETRA_CORE</span>
           <div className="hidden md:flex gap-md">
-            <span className="text-primary dark:text-primary border-b-2 border-primary pb-1 font-bold text-label-sm font-label-sm scale-95 transition-transform duration-150 focus:ring-2 focus:ring-secondary">GAME</span>
-            <span className="text-on-surface-variant dark:text-on-surface-variant font-medium text-label-sm font-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200">LEADERBOARD</span>
-            <span className="text-on-surface-variant dark:text-on-surface-variant font-medium text-label-sm font-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200">SETTINGS</span>
-            <span className="text-on-surface-variant dark:text-on-surface-variant font-medium text-label-sm font-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200">HELP</span>
+            <a href="#" className="text-primary dark:text-primary border-b-2 border-primary pb-1 font-bold text-label-sm font-label-sm scale-95 transition-transform duration-150 focus:ring-2 focus:ring-secondary">GAME</a>
+            <a href="#" className="text-on-surface-variant dark:text-on-surface-variant font-medium text-label-sm font-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200">LEADERBOARD</a>
+            <a href="#" className="text-on-surface-variant dark:text-on-surface-variant font-medium text-label-sm font-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200">SETTINGS</a>
+            <a href="#" className="text-on-surface-variant dark:text-on-surface-variant font-medium text-label-sm font-label-sm hover:text-primary dark:hover:text-primary transition-colors duration-200">HELP</a>
           </div>
         </div>
         <div className="flex items-center">
@@ -148,22 +148,22 @@ export function NextPiecePreview({ nextPieces = [], actions }: NextPiecePreviewP
             </div>
           </div>
           <nav className="flex-1 flex flex-col gap-xs py-md">
-            <span className="bg-secondary-container text-on-secondary-container rounded-lg mx-2 flex items-center gap-md p-sm text-label-sm font-label-sm translate-x-1 duration-200">
+            <a href="#" className="bg-secondary-container text-on-secondary-container rounded-lg mx-2 flex items-center gap-md p-sm text-label-sm font-label-sm translate-x-1 duration-200">
               <GamepadIcon />
               SOLO MODE
-            </span>
-            <span className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-sm text-label-sm font-label-sm hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors duration-200">
+            </a>
+            <a href="#" className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-sm text-label-sm font-label-sm hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors duration-200">
               <SwordsIcon />
               VERSUS
-            </span>
-            <span className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-sm text-label-sm font-label-sm hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors duration-200">
+            </a>
+            <a href="#" className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-sm text-label-sm font-label-sm hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors duration-200">
               <ExerciseIcon />
               PRACTICE
-            </span>
-            <span className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-sm text-label-sm font-label-sm hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors duration-200">
+            </a>
+            <a href="#" className="text-on-surface-variant hover:text-on-surface mx-2 flex items-center gap-md p-sm text-label-sm font-label-sm hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors duration-200">
               <SparkleIcon />
               ZEN
-            </span>
+            </a>
           </nav>
           <div className="p-md">
             <button className="w-full bg-primary text-on-primary py-sm rounded text-label-sm font-label-sm hover:bg-surface-tint transition-colors focus:ring-2 focus:ring-secondary focus:outline-none" type="button" data-action-id="new-game-2" onClick={actions?.["new-game-2"]}>
