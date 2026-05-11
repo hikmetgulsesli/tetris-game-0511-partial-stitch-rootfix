@@ -1,0 +1,694 @@
+[
+  {
+    "screenId": "f145e921323648b0acc4b670c7342952",
+    "screenTitle": "Next Piece Preview",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "GAME",
+        "href": "#",
+        "line": 110
+      },
+      {
+        "type": "link",
+        "label": "LEADERBOARD",
+        "href": "#",
+        "line": 111
+      },
+      {
+        "type": "link",
+        "label": "SETTINGS",
+        "href": "#",
+        "line": 112
+      },
+      {
+        "type": "link",
+        "label": "HELP",
+        "href": "#",
+        "line": 113
+      },
+      {
+        "type": "link",
+        "label": "SOLO MODE",
+        "href": "#",
+        "line": 136
+      },
+      {
+        "type": "link",
+        "label": "VERSUS",
+        "href": "#",
+        "line": 140
+      },
+      {
+        "type": "link",
+        "label": "PRACTICE",
+        "href": "#",
+        "line": 144
+      },
+      {
+        "type": "link",
+        "label": "ZEN",
+        "href": "#",
+        "line": 148
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 117
+      },
+      {
+        "type": "button",
+        "label": "NEW GAME",
+        "line": 154
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "GAME",
+        "href": "#",
+        "line": 110
+      },
+      {
+        "type": "link",
+        "label": "LEADERBOARD",
+        "href": "#",
+        "line": 111
+      },
+      {
+        "type": "link",
+        "label": "SETTINGS",
+        "href": "#",
+        "line": 112
+      },
+      {
+        "type": "link",
+        "label": "HELP",
+        "href": "#",
+        "line": 113
+      },
+      {
+        "type": "link",
+        "label": "SOLO MODE",
+        "href": "#",
+        "line": 136
+      },
+      {
+        "type": "link",
+        "label": "VERSUS",
+        "href": "#",
+        "line": 140
+      },
+      {
+        "type": "link",
+        "label": "PRACTICE",
+        "href": "#",
+        "line": 144
+      },
+      {
+        "type": "link",
+        "label": "ZEN",
+        "href": "#",
+        "line": 148
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 117
+      },
+      {
+        "type": "button",
+        "label": "NEW GAME",
+        "line": 154
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 10,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "9cdad694b8e9421da95bb066aa4d26dd",
+    "screenTitle": "Pause Overlay",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "Resume",
+        "line": 126
+      },
+      {
+        "type": "button",
+        "label": "Restart",
+        "line": 130
+      },
+      {
+        "type": "button",
+        "label": "Main Menu",
+        "line": 134
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "Resume",
+        "line": 126
+      },
+      {
+        "type": "button",
+        "label": "Restart",
+        "line": 130
+      },
+      {
+        "type": "button",
+        "label": "Main Menu",
+        "line": 134
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 3,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "485ff852b23542c7b4f73d95f3f70e7f",
+    "screenTitle": "Game Over",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "PLAY AGAIN",
+        "line": 152
+      },
+      {
+        "type": "button",
+        "label": "SCORE",
+        "line": 158
+      },
+      {
+        "type": "button",
+        "label": "MAIN MENU",
+        "line": 162
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "PLAY AGAIN",
+        "line": 152
+      },
+      {
+        "type": "button",
+        "label": "SCORE",
+        "line": 158
+      },
+      {
+        "type": "button",
+        "label": "MAIN MENU",
+        "line": 162
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 3,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "f93d75dfda4149b8bbfa5bdfe370381e",
+    "screenTitle": "Game Options",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "GAME",
+        "href": "#",
+        "line": 121
+      },
+      {
+        "type": "link",
+        "label": "LEADERBOARD",
+        "href": "#",
+        "line": 122
+      },
+      {
+        "type": "link",
+        "label": "SETTINGS",
+        "href": "#",
+        "line": 123
+      },
+      {
+        "type": "link",
+        "label": "HELP",
+        "href": "#",
+        "line": 124
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 127
+      },
+      {
+        "type": "button",
+        "label": "REBIND CONTROLS",
+        "line": 243
+      },
+      {
+        "type": "button",
+        "label": "RESET DEFAULTS",
+        "line": 251
+      },
+      {
+        "type": "button",
+        "label": "APPLY CHANGES",
+        "line": 254
+      },
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 149
+      },
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 178
+      },
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 209
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "GAME",
+        "href": "#",
+        "line": 121
+      },
+      {
+        "type": "link",
+        "label": "LEADERBOARD",
+        "href": "#",
+        "line": 122
+      },
+      {
+        "type": "link",
+        "label": "SETTINGS",
+        "href": "#",
+        "line": 123
+      },
+      {
+        "type": "link",
+        "label": "HELP",
+        "href": "#",
+        "line": 124
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 127
+      },
+      {
+        "type": "button",
+        "label": "REBIND CONTROLS",
+        "line": 243
+      },
+      {
+        "type": "button",
+        "label": "RESET DEFAULTS",
+        "line": 251
+      },
+      {
+        "type": "button",
+        "label": "APPLY CHANGES",
+        "line": 254
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 149
+      },
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 178
+      },
+      {
+        "type": "input",
+        "label": "range",
+        "inputType": "range",
+        "line": 209
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 11,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "4e541279fecf43cabe25c29b1ccb015b",
+    "screenTitle": "Controls Help",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "GAME",
+        "href": "#",
+        "line": 133
+      },
+      {
+        "type": "link",
+        "label": "LEADERBOARD",
+        "href": "#",
+        "line": 134
+      },
+      {
+        "type": "link",
+        "label": "SETTINGS",
+        "href": "#",
+        "line": 135
+      },
+      {
+        "type": "link",
+        "label": "HELP",
+        "href": "#",
+        "line": 137
+      },
+      {
+        "type": "link",
+        "label": "SOLO MODE",
+        "href": "#",
+        "line": 158
+      },
+      {
+        "type": "link",
+        "label": "VERSUS",
+        "href": "#",
+        "line": 162
+      },
+      {
+        "type": "link",
+        "label": "PRACTICE",
+        "href": "#",
+        "line": 166
+      },
+      {
+        "type": "link",
+        "label": "ZEN",
+        "href": "#",
+        "line": 170
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 141
+      },
+      {
+        "type": "button",
+        "label": "NEW GAME",
+        "line": 176
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "GAME",
+        "href": "#",
+        "line": 133
+      },
+      {
+        "type": "link",
+        "label": "LEADERBOARD",
+        "href": "#",
+        "line": 134
+      },
+      {
+        "type": "link",
+        "label": "SETTINGS",
+        "href": "#",
+        "line": 135
+      },
+      {
+        "type": "link",
+        "label": "HELP",
+        "href": "#",
+        "line": 137
+      },
+      {
+        "type": "link",
+        "label": "SOLO MODE",
+        "href": "#",
+        "line": 158
+      },
+      {
+        "type": "link",
+        "label": "VERSUS",
+        "href": "#",
+        "line": 162
+      },
+      {
+        "type": "link",
+        "label": "PRACTICE",
+        "href": "#",
+        "line": 166
+      },
+      {
+        "type": "link",
+        "label": "ZEN",
+        "href": "#",
+        "line": 170
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 141
+      },
+      {
+        "type": "button",
+        "label": "NEW GAME",
+        "line": 176
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 10,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "1a80c4b3cd56466fba80b1004b436613",
+    "screenTitle": "Game Board",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "GAME",
+        "href": "#",
+        "line": 136
+      },
+      {
+        "type": "link",
+        "label": "LEADERBOARD",
+        "href": "#",
+        "line": 137
+      },
+      {
+        "type": "link",
+        "label": "SETTINGS",
+        "href": "#",
+        "line": 138
+      },
+      {
+        "type": "link",
+        "label": "HELP",
+        "href": "#",
+        "line": 139
+      },
+      {
+        "type": "link",
+        "label": "SOLO MODE",
+        "href": "#",
+        "line": 162
+      },
+      {
+        "type": "link",
+        "label": "VERSUS",
+        "href": "#",
+        "line": 166
+      },
+      {
+        "type": "link",
+        "label": "PRACTICE",
+        "href": "#",
+        "line": 170
+      },
+      {
+        "type": "link",
+        "label": "ZEN",
+        "href": "#",
+        "line": 174
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 142
+      },
+      {
+        "type": "button",
+        "label": "NEW GAME",
+        "line": 180
+      },
+      {
+        "type": "button",
+        "label": "pause",
+        "line": 188
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "GAME",
+        "href": "#",
+        "line": 136
+      },
+      {
+        "type": "link",
+        "label": "LEADERBOARD",
+        "href": "#",
+        "line": 137
+      },
+      {
+        "type": "link",
+        "label": "SETTINGS",
+        "href": "#",
+        "line": 138
+      },
+      {
+        "type": "link",
+        "label": "HELP",
+        "href": "#",
+        "line": 139
+      },
+      {
+        "type": "link",
+        "label": "SOLO MODE",
+        "href": "#",
+        "line": 162
+      },
+      {
+        "type": "link",
+        "label": "VERSUS",
+        "href": "#",
+        "line": 166
+      },
+      {
+        "type": "link",
+        "label": "PRACTICE",
+        "href": "#",
+        "line": 170
+      },
+      {
+        "type": "link",
+        "label": "ZEN",
+        "href": "#",
+        "line": 174
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 142
+      },
+      {
+        "type": "button",
+        "label": "NEW GAME",
+        "line": 180
+      },
+      {
+        "type": "button",
+        "label": "pause",
+        "line": 188
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 11,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "9aa000e8deeb412585641e4c46d79061",
+    "screenTitle": "Main Menu",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "New Game",
+        "line": 118
+      },
+      {
+        "type": "button",
+        "label": "resume",
+        "line": 122
+      },
+      {
+        "type": "button",
+        "label": "Options",
+        "line": 127
+      },
+      {
+        "type": "button",
+        "label": "help",
+        "line": 131
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "New Game",
+        "line": 118
+      },
+      {
+        "type": "button",
+        "label": "resume",
+        "line": 122
+      },
+      {
+        "type": "button",
+        "label": "Options",
+        "line": 127
+      },
+      {
+        "type": "button",
+        "label": "help",
+        "line": 131
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 4,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  }
+]
