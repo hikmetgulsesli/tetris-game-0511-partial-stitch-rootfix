@@ -15,7 +15,7 @@ export interface MainMenuProps {
   actions?: Partial<Record<MainMenuActionId, () => void>>;
 }
 
-/* Inline SVG icons — Material Symbols are not allowed per UI contract */
+/* Inline SVG icons */
 function IconPlay({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
